@@ -1,0 +1,47 @@
+<header>
+    <h1>Catálogo Natural</h1>
+    <nav>
+        <a href="/">Todas</a>
+        {{#each categories}}
+        <a href="/?category={{this}}" {{#if (eq ../category this)}}style="font-weight: bold;" {{/if}}>
+            {{this}}
+        </a>
+        {{/each}}
+        <a class="btn btn-primary mb-3" href="/admin">Administracion</a>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>
+            {{#if category}}
+            Categoria: {{category}}
+            {{else}}
+            Todos los Productos
+            {{/if}}
+        </h2>
+
+        {{#if products.length}}
+
+        {{#each products}}
+        <div class="producto">
+            <img src={{this.image}} alt="imagen: {{this.name}}">
+            <h3>{{this.name}}</h3>
+            <p>{{this.description}}</p>
+            <p class="precio"><span class="original">${{this.price}}</span> <span class="oferta">${{this.sale}}</span>
+            </p>
+            <a href="https://wa.me/56900000000?text=Hola,%20me%20interesa%20este%20producto:%20{{this.name}}." class="boton">Consultar
+                por
+                WhatsApp</a>
+        </div>
+        {{/each}}
+
+        {{else}}
+        <p>No hay productos para mostrar.</p>
+        {{/if}}
+    </section>
+
+
+    <a class="boton-wsp"
+        href="https://wa.me/56900000000?text=Hola,%20me%20interesa%20un%20producto%20del%20catálogo.">Contáctanos por
+        WhatsApp</a>
