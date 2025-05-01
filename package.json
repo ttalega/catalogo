@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/ttalega/catalogo#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
+    "express-session": "^1.18.1",
     "mongoose": "^8.13.3",
     "nodemon": "^3.1.10"
   }

@@ -8,6 +8,11 @@
         </a>
         {{/each}}
         <a class="btn btn-primary mb-3" href="/admin">Administracion</a>
+        {{#if user}}
+        <p>Bienvenido, {{user.email}}</p>
+        <a href="/profile">Mi perfil</a>
+        <a href="/logout">Cerrar sesion</a>
+        {{/if}}
     </nav>
 </header>
 
@@ -30,7 +35,8 @@
             <p>{{this.description}}</p>
             <p class="precio"><span class="original">${{this.price}}</span> <span class="oferta">${{this.sale}}</span>
             </p>
-            <a href="https://wa.me/56900000000?text=Hola,%20me%20interesa%20este%20producto:%20{{this.name}}." class="boton">Consultar
+            <a href="https://wa.me/56900000000?text=Hola,%20me%20interesa%20este%20producto:%20{{this.name}}."
+                class="boton">Consultar
                 por
                 WhatsApp</a>
         </div>
@@ -45,3 +51,4 @@
     <a class="boton-wsp"
         href="https://wa.me/56900000000?text=Hola,%20me%20interesa%20un%20producto%20del%20catálogo.">Contáctanos por
         WhatsApp</a>
+</main>

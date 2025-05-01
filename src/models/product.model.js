@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const productoSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String, required: true },
   description: { type: String },
@@ -11,4 +11,4 @@ const productoSchema = new mongoose.Schema({
   created: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('products', productoSchema);
+module.exports = mongoose.model('products', productSchema);

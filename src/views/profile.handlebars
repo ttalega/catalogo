@@ -1,0 +1,30 @@
+<header>
+    <h1>Catálogo Natural</h1>
+    {{#if user}}
+    <p>Bienvenido, {{user.email}}</p>
+    <a class="btn btn-primary mb-3" href="/">Catalogo</a>
+    <a class="btn btn-primary mb-3" href="/admin">Administracion</a>
+    <a class="btn btn-primary mb-3" href="/logout">Cerrar sesion</a>
+    {{else}}
+    <a href="/login">Iniciar sesión</a>
+    {{/if}}
+</header>
+<main>
+    <section>
+        <h1>Cambiar datos</h1>
+        <form action="/profile" method="POST">
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" value="{{user.email}}" class=" form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button class="btn btn-success">Modificar Usuario</button>
+        </form>
+    </section>
+</main>

@@ -1,7 +1,12 @@
 <header>
   <h1>Administracion de Productos</h1>
   <nav>
-    <a class="btn btn-primary mb-3" href="/">Volver al catalogo</a>
+    {{#if user}}
+    <p>Bienvenido, {{user.email}}</p>
+    <a class="btn btn-primary mb-3" href="/">Catalogo</a>
+    <a class="btn btn-primary mb-3" href="/profile">Mi perfil</a>
+    <a class="btn btn-primary mb-3" href="/logout">Cerrar sesion</a>
+    {{/if}}
   </nav>
 </header>
 <main>
