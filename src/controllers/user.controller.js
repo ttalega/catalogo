@@ -1,23 +1,12 @@
-const User = require('../models/user.model.js'); // Asegúrate de tener este modelo
-const bcrypt = require('bcrypt');
+const userService = require('../services/user.service.js');
 
-exports.login = async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-
-    if (!user || !bcrypt.compareSync(password, user.password)) {
-        return res.redirect('/login');
+exports.updateUser = async (req, res) => {
+    try {
+        const userId = req.session.user.id; // ID desde sesión
+        await userService.update(userId, req.body);
+        res.redirect('/profile'); // o donde quieras
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error al actualizar el perfil');
     }
-
-    req.session.user = user;  // Guardar el usuario en la sesión
-    res.redirect('/admin');
-};
-
-exports.logout = (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.redirect('/');
-        }
-        res.redirect('/');
-    });
 };

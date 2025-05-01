@@ -1,12 +1,16 @@
-const repo = require('../repositories/product.repository.js');
+const Product = require('../repositories/product.repository.js');
 
-exports.list = async (req, res) => {
+exports.showForm = (req, res) => {
+    res.render('products/admin');
+};
+
+exports.listAdmin = async (req, res) => {
     try {
         const category = req.query.category;
         const filter = category ? { category: category } : {};
 
-        const products = await repo.getFiltered(filter);
-        const categories = await repo.getCategories();
+        const products = await Product.getFiltered(filter);
+        const categories = await Product.getCategories();
 
         res.render('products/admin', {
             products,
@@ -20,21 +24,17 @@ exports.list = async (req, res) => {
     }
 };
 
-exports.showForm = (req, res) => {
-    res.render('products/admin');
-};
-
 exports.createProduct = async (req, res) => {
-    await repo.create(req.body);
+    await Product.create(req.body);
     res.redirect('/admin');
 };
 
 exports.updateProduct = async (req, res) => {
-    await repo.update(req.params.id, req.body);
+    await Product.update(req.params.id, req.body);
     res.redirect('/admin');
 };
 
 exports.deleteProduct = async (req, res) => {
-    await repo.delete(req.params.id);
+    await Product.delete(req.params.id);
     res.redirect('/admin');
 };

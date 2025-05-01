@@ -1,12 +1,12 @@
-const repo = require('../repositories/product.repository.js');
+const Product = require('../repositories/product.repository.js');
 
 exports.list = async (req, res) => {
   try {
     const category = req.query.category;
     const filter = category ? { category: category } : {};
 
-    const products = await repo.getFiltered(filter);
-    const categories = await repo.getCategories();
+    const products = await Product.getFiltered(filter);
+    const categories = await Product.getCategories();
 
     res.render('products/products', {
       products,

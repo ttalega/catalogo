@@ -5,11 +5,11 @@ const bodyParser = require('body-parser');
 const productRoutes = require('./routes/product.routes.js');
 const adminRoutes = require('./routes/admin.routes.js');
 const authRoutes = require('./routes/auth.routes.js');
+const userRoutes = require('./routes/user.routes.js')
 const connectDB = require('./config/database.js');
 const path = require('path'); // <- esta línea es importante
 const session = require('./config/session.js');
 require('dotenv').config();
-
 const { requireAuth } = require('./middlewares/auth.middleware.js')
 
 const app = express();
@@ -21,10 +21,10 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(session);
-
 // Servir archivos estáticos desde /src/public
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session);
 
 // Motor de plantillas
 app.engine('handlebars', exphbs.engine({
@@ -46,5 +46,6 @@ app.use((req, res, next) => {
 app.use('/', productRoutes);
 app.use('/admin', requireAuth, adminRoutes);
 app.use('/', authRoutes);
+app.use('/profile', requireAuth, userRoutes)
 
 module.exports = app;
