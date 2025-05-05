@@ -1,22 +1,66 @@
 <header>
-    <h1>Catálogo Natural</h1>
-    <nav>
-        <a href="/">Todas</a>
-        {{#each categories}}
-        <a href="/?category={{this}}" {{#if (eq ../category this)}}style="font-weight: bold;" {{/if}}>
-            {{this}}
-        </a>
-        {{/each}}
-        <a class="btn btn-primary mb-3" href="/admin">Administracion</a>
+    <div class="header-top">
+        <h1>Catálogo Natural</h1>
         {{#if user}}
-        <p>Bienvenido, {{user.email}}</p>
-        <a href="/profile">Mi perfil</a>
-        <a href="/logout">Cerrar sesion</a>
+        <div class="user-info">
+            <p>Bienvenido, {{user.email}}</p>
+            <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
+            <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
+        </div>
         {{/if}}
-    </nav>
+    </div>
+
+    {{#if categories}}
+
+    {{!-- <a href="/">Todas</a> --}}
+    {{#each categories}}
+    <a class="btn btn-warning" href="#{{this}}" {{#if (eq ../category this)}}style="font-weight: bold;" {{/if}}>
+        {{this}}
+    </a>
+    {{/each}}
+    <a class="btn btn-danger" href="/admin">Administración</a>
+
+    {{/if}}
 </header>
 
 <main>
+    {{#if products.length}}
+    {{#each categories}}
+    <section id="{{this}}">
+        <h2>{{this}}</h2>
+        <div class="productos">
+            {{#each ../products}}
+            {{#if (eq this.category ../this)}}
+            <div class="producto">
+                <img src="{{this.image}}" alt="{{this.image}}">
+                <h3>{{this.name}}</h3>
+                <p>{{this.description}}</p>
+                <p class="precio">
+                    <span class="original">${{this.price}}</span>
+                    <span class="oferta">${{this.offer}}</span>
+                </p>
+                <a href="https://wa.me/56986180837?text=Hola,%20me%20interesa%20el%20producto:%20{{this.name}}."
+                    class="boton">
+                    Consultar por WhatsApp
+                    <img src="/img/WhatsApp.svg" alt="wsp">
+                </a>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+    </section>
+    {{/each}}
+    {{else}}
+    <p>No hay productos para mostrar.</p>
+    {{/if}}
+</main>
+
+<a class="boton-wsp"
+    href="https://wa.me/56986180837?text=Hola,%20me%20interesa%20un%20producto%20del%20catálogo.">Contáctanos
+    por WhatsApp <img src="/img/WhatsApp.svg" alt="wsp" srcset=""></a>
+
+
+{{!-- <main>
     <section>
         <h2>
             {{#if category}}
@@ -51,4 +95,4 @@
     <a class="boton-wsp"
         href="https://wa.me/56900000000?text=Hola,%20me%20interesa%20un%20producto%20del%20catálogo.">Contáctanos por
         WhatsApp</a>
-</main>
+</main> --}}

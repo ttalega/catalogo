@@ -1,13 +1,16 @@
 <header>
-    <h1>Catálogo Natural</h1>
-    {{#if user}}
-    <p>Bienvenido, {{user.email}}</p>
-    <a class="btn btn-primary mb-3" href="/">Catalogo</a>
-    <a class="btn btn-primary mb-3" href="/admin">Administracion</a>
-    <a class="btn btn-primary mb-3" href="/logout">Cerrar sesion</a>
-    {{else}}
-    <a href="/login">Iniciar sesión</a>
-    {{/if}}
+    <div class="header-top">
+        <h1>Mi Perfil</h1>
+        {{#if user}}
+        <div class="user-info">
+            <p>Bienvenido, {{user.email}}</p>
+            <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
+            <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
+        </div>
+        {{/if}}
+    </div>
+    <a class="btn btn-warning" href="/">Catalogo</a>
+    <a class="btn btn-danger" href="/admin">Administración</a>
 </header>
 <main>
     <section>
