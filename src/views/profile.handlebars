@@ -1,33 +1,38 @@
 <header>
+  <div class="header-logo"></div>
+  {{#if user}}
+  <div class="user-info">
+    <p>Bienvenido, {{user.email}}</p>
+    <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
+    <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
+  </div>
+  {{/if}}
+  <div class="content-column">
     <div class="header-top">
-        <h1>Mi Perfil</h1>
-        {{#if user}}
-        <div class="user-info">
-            <p>Bienvenido, {{user.email}}</p>
-            <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
-            <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
-        </div>
-        {{/if}}
+      <h1>Mi Perfil</h1>
     </div>
-    <a class="btn btn-warning" href="/">Catalogo</a>
-    <a class="btn btn-danger" href="/admin">Administración</a>
+    <div class="category-buttons">
+      <a class="btn btn-warning" href="/">Catalogo</a>
+      <a class="btn btn-danger" href="/admin">Administración</a>
+    </div>
+  </div>
 </header>
 <main>
-    <section>
-        <h1>Cambiar datos</h1>
-        <form action="/profile" method="POST">
+  <section>
+    <h1>Cambiar datos</h1>
+    <form action="/profile" method="POST">
 
-            <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" name="email" value="{{user.email}}" class=" form-control" required>
-            </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" value="{{user.email}}" class=" form-control" required>
+      </div>
 
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
 
-            <button class="btn btn-success">Modificar Usuario</button>
-        </form>
-    </section>
+      <button class="btn btn-success">Modificar Usuario</button>
+    </form>
+  </section>
 </main>

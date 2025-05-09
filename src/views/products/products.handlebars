@@ -1,26 +1,28 @@
 <header>
-    <div class="header-top">
-        <h1>Catálogo Natural</h1>
-        {{#if user}}
-        <div class="user-info">
-            <p>Bienvenido, {{user.email}}</p>
-            <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
-            <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
+    <div class="header-logo"></div>
+    {{#if user}}
+    <div class="user-info">
+        <p>Bienvenido, {{user.email}}</p>
+        <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
+        <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
+    </div>
+    {{/if}}
+    <div class="content-column">
+        <div class="header-top">
+            <h1>Catálogo Natural</h1>
+        </div>
+
+        {{#if categories}}
+        <div class="category-buttons">
+            {{#each categories}}
+            <a class="btn btn-warning" href="#{{this}}" {{#if (eq ../category this)}}style="font-weight: bold;" {{/if}}>
+                {{this}}
+            </a>
+            {{/each}}
+            <a class="btn btn-danger" href="/admin">Administración</a>
         </div>
         {{/if}}
     </div>
-
-    {{#if categories}}
-
-    {{!-- <a href="/">Todas</a> --}}
-    {{#each categories}}
-    <a class="btn btn-warning" href="#{{this}}" {{#if (eq ../category this)}}style="font-weight: bold;" {{/if}}>
-        {{this}}
-    </a>
-    {{/each}}
-    <a class="btn btn-danger" href="/admin">Administración</a>
-
-    {{/if}}
 </header>
 
 <main>

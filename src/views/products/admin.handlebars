@@ -1,16 +1,21 @@
 <header>
-  <div class="header-top">
-    <h1>Gestion de Productos</h1>
-    {{#if user}}
-    <div class="user-info">
-      <p>Bienvenido, {{user.email}}</p>
-      <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
-      <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
-    </div>
-    {{/if}}
+  <div class="header-logo"></div>
+  {{#if user}}
+  <div class="user-info">
+    <p>Bienvenido, {{user.email}}</p>
+    <a class="btn btn-warning btn-sm" href="/profile">Mi perfil</a>
+    <a class="btn btn-danger btn-sm" href="/logout">Cerrar sesión</a>
   </div>
-  <a class="btn btn-warning" href="/">Catalogo</a>
-  <a class="btn btn-danger" href="/admin">Administración</a>
+  {{/if}}
+  <div class="content-column">
+    <div class="header-top">
+      <h1>Gestion de Productos</h1>
+    </div>
+    <div class="category-buttons">
+      <a class="btn btn-warning" href="/">Catalogo</a>
+      <a class="btn btn-danger" href="/admin">Administración</a>
+    </div>
+  </div>
 </header>
 <main>
   <section>
