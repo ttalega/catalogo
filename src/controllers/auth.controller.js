@@ -16,7 +16,7 @@ exports.login = async (req, res) => {
     if (!match) return res.status(401).render('login', { error: 'Contraseña incorrecta' });
 
     req.session.user = { id: user._id, email: user.email };
-    res.redirect('/profile');
+    res.redirect('/admin');
 };
 
 exports.logout = (req, res) => {

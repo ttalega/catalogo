@@ -6,6 +6,7 @@ module.exports = {
     lte: (a, b) => a <= b,
     ifLt: function (a, b, options) {
         return a < b ? options.fn(this) : options.inverse(this);
-    }
+    },
     // Puedes agregar más helpers aquí
+    neq: (a, b) => a =! b,
 };
