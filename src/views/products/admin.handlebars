@@ -81,7 +81,8 @@
 
     <div class="table-responsive">
       <form id="products-form" action="/admin/update" method="POST">
-        <table class="table table-bordered table-sm align-middle text-center table-striped table-hover">
+        <table id="products-table"
+          class="table table-bordered table-sm align-middle text-center table-striped table-hover">
           <thead class="table-light">
             <tr>
               <th>Nombre</th>
@@ -98,20 +99,42 @@
             {{#each products}}
             <tr>
               <input type="hidden" name="products[{{@index}}][_id]" value="{{this._id}}">
-              <td><input type="text" class="form-control form-control-sm" name="products[{{@index}}][name]"
-                  value="{{this.name}}"></td>
-              <td><input type="text" class="form-control form-control-sm" name="products[{{@index}}][category]"
-                  value="{{this.category}}"></td>
-              <td><input type="text" class="form-control form-control-sm" name="products[{{@index}}][description]"
-                  value="{{this.description}}"></td>
-              <td><input type="text" class="form-control form-control-sm" name="products[{{@index}}][image]"
-                  value="{{this.image}}"></td>
-              <td><input type="number" step="0.01" class="form-control form-control-sm"
-                  name="products[{{@index}}][price]" value="{{this.price}}"></td>
-              <td><input type="number" step="0.01" class="form-control form-control-sm"
-                  name="products[{{@index}}][offer]" value="{{this.offer}}"></td>
-              <td><input type="number" class="form-control form-control-sm" name="products[{{@index}}][stock]"
-                  value="{{this.stock}}"></td>
+
+              <td data-order="{{this.name}}">
+                <input type="text" class="form-control form-control-sm" name="products[{{@index}}][name]"
+                  value="{{this.name}}">
+              </td>
+
+              <td data-order="{{this.category}}">
+                <input type="text" class="form-control form-control-sm" name="products[{{@index}}][category]"
+                  value="{{this.category}}">
+              </td>
+
+              <td data-order="{{this.description}}">
+                <input type="text" class="form-control form-control-sm" name="products[{{@index}}][description]"
+                  value="{{this.description}}">
+              </td>
+
+              <td data-order="{{this.image}}">
+                <input type="text" class="form-control form-control-sm" name="products[{{@index}}][image]"
+                  value="{{this.image}}">
+              </td>
+
+              <td data-order="{{this.price}}">
+                <input type="number" step="0.01" class="form-control form-control-sm" name="products[{{@index}}][price]"
+                  value="{{this.price}}">
+              </td>
+
+              <td data-order="{{this.offer}}">
+                <input type="number" step="0.01" class="form-control form-control-sm" name="products[{{@index}}][offer]"
+                  value="{{this.offer}}">
+              </td>
+
+              <td data-order="{{this.stock}}">
+                <input type="number" class="form-control form-control-sm" name="products[{{@index}}][stock]"
+                  value="{{this.stock}}">
+              </td>
+
               <td>
                 <form action="/admin/delete/{{this._id}}" method="POST"
                   onsubmit="return confirm('¿Eliminar este producto?');">
@@ -122,6 +145,7 @@
             </tr>
             {{/each}}
           </tbody>
+
         </table>
 
         <div class="text-center mt-3">
@@ -133,4 +157,5 @@
   </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/scripts/tables.js"></script>
 <script src="/scripts/alerts.js"></script>
