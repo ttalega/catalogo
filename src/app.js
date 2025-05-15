@@ -18,6 +18,7 @@ const app = express();
 connectDB();
 
 // Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
