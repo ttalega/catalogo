@@ -8,5 +8,13 @@ module.exports = {
         return a < b ? options.fn(this) : options.inverse(this);
     },
     // Puedes agregar más helpers aquí
-    neq: (a, b) => a =! b,
+    neq: (a, b) => a = !b,
+    // valor formato chile
+    clp: function (valor) {
+        return new Intl.NumberFormat('es-CL', {
+            style: 'currency',
+            currency: 'CLP',
+            minimumFractionDigits: 0
+        }).format(valor);
+    }
 };

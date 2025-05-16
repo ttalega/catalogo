@@ -36,10 +36,10 @@
             <div class="producto">
                 <img src="{{this.image}}" alt="{{this.image}}">
                 <h3>{{this.name}}</h3>
-                <p>{{this.description}}</p>
+                <p class="description">{{this.description}}</p>
                 <p class="precio">
-                    <span class="original">${{this.price}}</span>
-                    <span class="oferta">${{this.offer}}</span>
+                    <span class="original">{{clp this.price}}</span>
+                    <span class="oferta">{{clp this.offer}}</span>
                 </p>
                 <a href="https://wa.me/56986180837?text=Hola,%20me%20interesa%20el%20producto:%20{{this.name}}."
                     class="boton">
